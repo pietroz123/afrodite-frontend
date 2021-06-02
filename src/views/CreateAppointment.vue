@@ -36,19 +36,19 @@ export default {
             items: [
                 {
                     label: "Profissionais",
-                    to: "/new-appointment",
+                    to: "/agendamento",
                 },
                 {
                     label: "Serviços",
-                    to: "/new-appointment/servicos",
+                    to: "/agendamento/servicos",
                 },
                 {
                     label: "Horários",
-                    to: "/new-appointment/horarios",
+                    to: "/agendamento/horarios",
                 },
                 {
                     label: "Resumo",
-                    to: "/new-appointment/resumo",
+                    to: "/agendamento/resumo",
                 },
             ],
             formObject: {}

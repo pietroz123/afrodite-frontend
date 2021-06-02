@@ -8,22 +8,22 @@ const routes = [
 		component: Home,
 	},
 	{
-		path: "/new-appointment",
+		path: "/agendamento",
 		component: () => import('../views/CreateAppointment.vue'),
 		children: [{
-            path: '/new-appointment/',
+            path: '/agendamento/',
             component: () => import('../components/steps/ProfissionalStep.vue')
         },
         {
-            path: '/new-appointment/servicos',
+            path: '/agendamento/servicos',
             component: () => import('../components/steps/ServicoStep.vue')
         },
         {
-            path: '/new-appointment/horarios',
+            path: '/agendamento/horarios',
             component: () => import('../components/steps/HorariosStep.vue')
         },
         {
-            path: '/new-appointment/resumo',
+            path: '/agendamento/resumo',
             component: () => import('../components/steps/ResumoStep.vue')
         }]
 	},
