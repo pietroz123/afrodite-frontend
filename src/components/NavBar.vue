@@ -25,17 +25,26 @@ export default {
     },
     data() {
         return {
-            items: [{}],
+            items: [
+                {
+                    label: "Novo Agendamento",
+                    icon: "pi pi-calendar-plus",
+                    to: '/agendamento'
+                },
+            ],
         };
     },
 };
 </script>
 
-<style scoped>
+<style>
 .p-menubar {
     background: unset;
     color: #000000;
     border: unset;
     border-radius: unset;
+}
+.p-menubar-start {
+    margin-right: 1rem;
 }
 </style>
