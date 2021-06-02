@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import CreateAppointment from "../views/CreateAppointment.vue";
 
 const routes = [
 	{
@@ -10,8 +9,23 @@ const routes = [
 	},
 	{
 		path: "/new-appointment",
-		name: "CreateAppointment",
-		component: CreateAppointment,
+		component: () => import('../views/CreateAppointment.vue'),
+		children: [{
+            path: '/new-appointment/',
+            component: () => import('../components/steps/ProfissionalStep.vue')
+        },
+        {
+            path: '/new-appointment/servicos',
+            component: () => import('../components/steps/ServicoStep.vue')
+        },
+        {
+            path: '/new-appointment/horarios',
+            component: () => import('../components/steps/HorariosStep.vue')
+        },
+        {
+            path: '/new-appointment/resumo',
+            component: () => import('../components/steps/ResumoStep.vue')
+        }]
 	},
 	{
 		path: "/about",

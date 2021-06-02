@@ -3,42 +3,81 @@
         <NavBar />
     </div>
     <div>
-        <Steps :model="items" />
+        <Steps :model="items" :readonly="false" />
+    </div>
+    <div>
+        <router-view
+            v-slot="{ Component }"
+            :formData="formObject"
+            @prev-page="prevPage($event)"
+            @next-page="nextPage($event)"
+            @complete="complete"
+        >
+            <keep-alive>
+                <component :is="Component" />
+            </keep-alive>
+        </router-view>
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import NavBar from "@/components/NavBar.vue";
-import Steps from 'primevue/steps';
+import Steps from "primevue/steps";
 
 export default {
     name: "Home",
     components: {
         NavBar,
-		Steps,
+        Steps,
     },
     data() {
         return {
             items: [
                 {
-                    label: "Personal",
-                    to: "/steps",
+                    label: "Profissionais",
+                    to: "/new-appointment",
                 },
                 {
-                    label: "Seat",
-                    to: "/steps/seat",
+                    label: "Serviços",
+                    to: "/new-appointment/servicos",
                 },
                 {
-                    label: "Payment",
-                    to: "/steps/payment",
+                    label: "Horários",
+                    to: "/new-appointment/horarios",
                 },
                 {
-                    label: "Confirmation",
-                    to: "/steps/confirmation",
+                    label: "Resumo",
+                    to: "/new-appointment/resumo",
                 },
             ],
+            formObject: {}
         };
+    },
+    methods: {
+        nextPage(event) {
+            console.log('nextPage event', event);
+            for (let field in event.formData) {
+                this.formObject[field] = event.formData[field];
+            }
+            this.$router.push(this.items[event.pageIndex + 1].to);
+        },
+        prevPage(event) {
+            console.log('prevPage event', event);
+            this.$router.push(this.items[event.pageIndex - 1].to);
+        },
+        complete() {
+            this.$toast.add({
+                severity: "success",
+                summary: "Order submitted",
+                detail:
+                    "Dear, " +
+                    this.formObject.firstname +
+                    " " +
+                    this.formObject.lastname +
+                    " your order completed.",
+            });
+        },
     },
 };
 </script>
