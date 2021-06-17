@@ -18,8 +18,15 @@
             </keep-alive>
         </router-view>
     </div> -->
+
     <div class="p-pt-3 p-px-6">
-        <SelectProfessional />
+        <SelectProfessional
+            @professional-selected="handleProfessionalSelection"
+        />
+    </div>
+
+    <div v-if="professionalSelected" class="p-pt-3 p-px-6">
+        <SelectService :professional="professionalSelected" />
     </div>
 </template>
 
@@ -28,6 +35,7 @@
 import NavBar from "@/components/NavBar.vue";
 // import Steps from "primevue/steps";
 import SelectProfessional from "../components/SelectProfessional.vue";
+import SelectService from "../components/SelectService.vue";
 
 export default {
     name: "Home",
@@ -35,6 +43,7 @@ export default {
         NavBar,
         // Steps,
         SelectProfessional,
+        SelectService,
     },
     data() {
         return {
@@ -57,6 +66,8 @@ export default {
                 },
             ],
             formObject: {},
+            // new
+            professionalSelected: null,
         };
     },
     methods: {
@@ -82,6 +93,12 @@ export default {
                     this.formObject.lastname +
                     " your order completed.",
             });
+        },
+        /**
+         * Handlers
+         */
+        handleProfessionalSelection(professionalSelected) {
+            this.professionalSelected = professionalSelected;
         },
     },
 };

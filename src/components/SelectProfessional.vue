@@ -9,6 +9,7 @@
             <Button
                 type="button"
                 class="p-px-3 p-button-raised p-button-secondary p-button-text"
+                @click="handleSelection(professional)"
             >
                 <div class="p-d-flex p-flex-column p-ai-center">
                     <Avatar size="xlarge" shape="circle" class="p-mx-2">
@@ -31,6 +32,7 @@ export default {
         Avatar,
         Button,
     },
+    emits: ["professional-selected"],
     data() {
         return {
             profissionais: [],
@@ -44,9 +46,12 @@ export default {
             this.$axios
                 .get("https://afrodite-backend.herokuapp.com/api/profissionais")
                 .then((res) => {
-                    console.log("res", res);
+                    console.log("professionals", res);
                     this.profissionais = res.data.rows;
                 });
+        },
+        handleSelection(professional) {
+            this.$emit("professional-selected", professional);
         },
     },
 };
