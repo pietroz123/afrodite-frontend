@@ -31,6 +31,13 @@
             @service-selected="handleServiceSelection"
         />
     </div>
+
+    <div v-if="serviceSelected" class="p-pt-3 p-px-6">
+        <SelectSchedule
+            :professional="professionalSelected"
+            :service="serviceSelected"
+        />
+    </div>
 </template>
 
 <script>
@@ -39,14 +46,15 @@ import NavBar from "@/components/NavBar.vue";
 // import Steps from "primevue/steps";
 import SelectProfessional from "../components/SelectProfessional.vue";
 import SelectService from "../components/SelectService.vue";
+import SelectSchedule from "../components/SelectSchedule.vue";
 
 export default {
-    name: "Home",
     components: {
         NavBar,
         // Steps,
         SelectProfessional,
         SelectService,
+        SelectSchedule,
     },
     data() {
         return {
@@ -102,6 +110,7 @@ export default {
          * Handlers
          */
         handleProfessionalSelection(professionalSelected) {
+            console.log("🚀 / professionalSelected", professionalSelected);
             this.professionalSelected = professionalSelected;
         },
         handleServiceSelection(serviceSelected) {
