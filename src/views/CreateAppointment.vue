@@ -26,14 +26,14 @@
 <script>
 // @ is an alias to /src
 import NavBar from "@/components/NavBar.vue";
-import Steps from "primevue/steps";
-import SelectProfessional from '../components/SelectProfessional.vue';
+// import Steps from "primevue/steps";
+import SelectProfessional from "../components/SelectProfessional.vue";
 
 export default {
     name: "Home",
     components: {
         NavBar,
-        Steps,
+        // Steps,
         SelectProfessional,
     },
     data() {
@@ -56,19 +56,19 @@ export default {
                     to: "/agendamento/resumo",
                 },
             ],
-            formObject: {}
+            formObject: {},
         };
     },
     methods: {
         nextPage(event) {
-            console.log('nextPage event', event);
+            console.log("nextPage event", event);
             for (let field in event.formData) {
                 this.formObject[field] = event.formData[field];
             }
             this.$router.push(this.items[event.pageIndex + 1].to);
         },
         prevPage(event) {
-            console.log('prevPage event', event);
+            console.log("prevPage event", event);
             this.$router.push(this.items[event.pageIndex - 1].to);
         },
         complete() {
