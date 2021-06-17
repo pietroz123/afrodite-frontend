@@ -2,7 +2,7 @@
     <div class="">
         <NavBar />
     </div>
-    <div>
+    <!-- <div>
         <Steps :model="items" :readonly="false" />
     </div>
     <div>
@@ -17,6 +17,9 @@
                 <component :is="Component" />
             </keep-alive>
         </router-view>
+    </div> -->
+    <div class="p-p-6">
+        <SelectProfessional />
     </div>
 </template>
 
@@ -24,12 +27,14 @@
 // @ is an alias to /src
 import NavBar from "@/components/NavBar.vue";
 import Steps from "primevue/steps";
+import SelectProfessional from '../components/SelectProfessional.vue';
 
 export default {
     name: "Home",
     components: {
         NavBar,
         Steps,
+        SelectProfessional,
     },
     data() {
         return {
