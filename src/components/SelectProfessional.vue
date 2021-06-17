@@ -9,7 +9,7 @@
             <Button
                 type="button"
                 class="p-px-3 p-button-raised p-button-secondary p-button-text"
-                @click="handleSelection(professional)"
+                @click="notifySelection(professional)"
             >
                 <div class="p-d-flex p-flex-column p-ai-center">
                     <Avatar size="xlarge" shape="circle" class="p-mx-2">
@@ -50,7 +50,7 @@ export default {
                     this.profissionais = res.data.rows;
                 });
         },
-        handleSelection(professional) {
+        notifySelection(professional) {
             this.$emit("professional-selected", professional);
         },
     },

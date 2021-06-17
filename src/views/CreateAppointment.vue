@@ -26,7 +26,10 @@
     </div>
 
     <div v-if="professionalSelected" class="p-pt-3 p-px-6">
-        <SelectService :professional="professionalSelected" />
+        <SelectService
+            :professional="professionalSelected"
+            @service-selected="handleServiceSelection"
+        />
     </div>
 </template>
 
@@ -68,6 +71,7 @@ export default {
             formObject: {},
             // new
             professionalSelected: null,
+            serviceSelected: null,
         };
     },
     methods: {
@@ -99,6 +103,10 @@ export default {
          */
         handleProfessionalSelection(professionalSelected) {
             this.professionalSelected = professionalSelected;
+        },
+        handleServiceSelection(serviceSelected) {
+            console.log("🚀 / serviceSelected", serviceSelected);
+            this.serviceSelected = serviceSelected;
         },
     },
 };

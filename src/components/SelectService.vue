@@ -4,7 +4,11 @@
     <p>{{ professional.name }}</p>
 
     <ul>
-        <li v-for="service in services" :key="service.sfid">
+        <li
+            v-for="service in services"
+            :key="service.sfid"
+            @click="notifySelection(service)"
+        >
             {{ service.name }}
         </li>
     </ul>
@@ -12,6 +16,7 @@
 
 <script>
 export default {
+    emits: ["service-selected"],
     props: {
         professional: Object,
     },
@@ -40,6 +45,9 @@ export default {
                     console.log("services", res);
                     this.services = res.data.rows;
                 });
+        },
+        notifySelection(service) {
+            this.$emit("service-selected", service);
         },
     },
 };
