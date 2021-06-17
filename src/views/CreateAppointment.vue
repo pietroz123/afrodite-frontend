@@ -18,7 +18,7 @@
             </keep-alive>
         </router-view>
     </div> -->
-    <div class="p-p-6">
+    <div class="p-pt-3 p-px-6">
         <SelectProfessional />
     </div>
 </template>

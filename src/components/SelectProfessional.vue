@@ -1,32 +1,35 @@
 <template>
     <h2>Selecionar Profissional</h2>
 
-    <div class="p-d-flex p-jc-evenly">
+    <div class="p-d-flex p-jc-evenly p-pt-4">
         <template
             v-for="professional in profissionais"
             :key="professional.sfid"
         >
-            <div class="p-d-flex p-flex-column">
-                <Avatar
-                    size="xlarge"
-                    shape="circle"
-                    class="p-mx-2"
-                >
-                    {{ professional.name.charAt(0).toUpperCase() }}
-                </Avatar>
+            <Button
+                type="button"
+                class="p-px-3 p-button-raised p-button-secondary p-button-text"
+            >
+                <div class="p-d-flex p-flex-column p-ai-center">
+                    <Avatar size="xlarge" shape="circle" class="p-mx-2">
+                        {{ professional.name.charAt(0).toUpperCase() }}
+                    </Avatar>
 
-                <p>{{ professional.name }}</p>
-            </div>
+                    <p>{{ professional.name }}</p>
+                </div>
+            </Button>
         </template>
     </div>
 </template>
 
 <script>
 import Avatar from "primevue/avatar";
+import Button from "primevue/button";
 
 export default {
     components: {
         Avatar,
+        Button,
     },
     data() {
         return {
