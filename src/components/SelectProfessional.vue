@@ -28,6 +28,9 @@ import Avatar from "primevue/avatar";
 import Button from "primevue/button";
 
 export default {
+    props: {
+        service: Object,
+    },
     components: {
         Avatar,
         Button,
@@ -41,10 +44,19 @@ export default {
     mounted() {
         this.getProfissionais();
     },
+    watch: {
+        service: function (newValue, oldValue) {
+            if (oldValue != newValue) {
+                this.getProfissionais();
+            }
+        },
+    },
     methods: {
         getProfissionais() {
             this.$axios
-                .get("https://afrodite-backend.herokuapp.com/api/profissionais")
+                .get(
+                    `https://afrodite-backend.herokuapp.com/api/servicos/${this.service.sfid}/profissionais`
+                )
                 .then((res) => {
                     console.log("professionals", res);
                     this.profissionais = res.data.rows;
