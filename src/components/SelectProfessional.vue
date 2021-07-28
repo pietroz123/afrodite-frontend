@@ -2,6 +2,10 @@
     <h2>Selecionar Profissional</h2>
 
     <div class="p-d-flex p-jc-evenly p-pt-4">
+        <template v-if="!profissionais.length">
+            Nenhum profissional encontrado para esse serviço.
+        </template>
+
         <template
             v-for="professional in profissionais"
             :key="professional.sfid"
