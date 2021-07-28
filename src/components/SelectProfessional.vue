@@ -46,17 +46,17 @@ export default {
         };
     },
     mounted() {
-        this.getProfissionais();
+        this.getProfessionals();
     },
     watch: {
         service: function (newValue, oldValue) {
             if (oldValue != newValue) {
-                this.getProfissionais();
+                this.getProfessionals();
             }
         },
     },
     methods: {
-        getProfissionais() {
+        getProfessionals() {
             this.$axios
                 .get(
                     `https://afrodite-backend.herokuapp.com/api/servicos/${this.service.sfid}/profissionais`
