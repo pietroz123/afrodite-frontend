@@ -34,6 +34,7 @@ export default {
         },
         notifySelection(service) {
             this.$emit("service-selected", service);
+            this.$emit("professional-selected", null); // clears selected professional
         },
     },
 };

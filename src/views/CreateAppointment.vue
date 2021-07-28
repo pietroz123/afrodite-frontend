@@ -20,7 +20,10 @@
     </div> -->
 
     <div class="p-pt-3 p-px-6">
-        <SelectService @service-selected="handleServiceSelection" />
+        <SelectService
+            @service-selected="handleServiceSelection"
+            @professional-selected="handleProfessionalSelection"
+        />
     </div>
 
     <div v-if="serviceSelected" class="p-pt-3 p-px-6">
@@ -30,7 +33,7 @@
         />
     </div>
 
-    <div v-if="professionalSelected" class="p-pt-3 p-px-6">
+    <div v-if="serviceSelected && professionalSelected" class="p-pt-3 p-px-6">
         <SelectSchedule
             :professional="professionalSelected"
             :service="serviceSelected"
