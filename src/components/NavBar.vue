@@ -3,9 +3,9 @@
         <template #start>
             <img
                 alt="logo"
-                src="../assets/logoAfrodite.jpg"
+                src="../assets/logo-nobg.png"
                 height="40"
-                class="p-mr-2"
+                class="p-ml-2"
             />
         </template>
         <template #end>
@@ -29,7 +29,7 @@ export default {
                 {
                     label: "Novo Agendamento",
                     icon: "pi pi-calendar-plus",
-                    to: '/agendamento'
+                    to: "/agendamento",
                 },
             ],
         };
