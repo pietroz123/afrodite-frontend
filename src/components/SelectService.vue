@@ -14,7 +14,7 @@
 
 <script>
 export default {
-    emits: ["service-selected"],
+    emits: ["service-selected", "professional-selected"],
     data() {
         return {
             services: [],
