@@ -50,20 +50,24 @@
         <p>Serviço: {{ serviceSelected.name }}</p>
         <p>Profissional: {{ professionalSelected.name }}</p>
         <p>Horário: {{ timeSelected.format("dddd - DD/MM/YYYY") }}</p>
+
+        <Button label="Confirmar agendamento" @click="scheduleAppointment" />
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import NavBar from "@/components/NavBar.vue";
+import NavBar from "../components/NavBar.vue";
 // import Steps from "primevue/steps";
 import SelectProfessional from "../components/SelectProfessional.vue";
 import SelectService from "../components/SelectService.vue";
 import SelectSchedule from "../components/SelectSchedule.vue";
+import Button from "primevue/button";
 
 export default {
     components: {
         NavBar,
+        Button,
         // Steps,
         SelectProfessional,
         SelectService,
@@ -119,6 +123,14 @@ export default {
                     this.formObject.lastname +
                     " your order completed.",
             });
+        },
+        /**
+         * Appointment confirmation
+         */
+        scheduleAppointment() {
+            console.log(this.serviceSelected);
+            console.log(this.professionalSelected);
+            console.log(this.timeSelected);
         },
         /**
          * Handlers
