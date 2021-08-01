@@ -1,17 +1,20 @@
 <template>
     <h2>Selecionar Serviço</h2>
 
-    <Card
-        v-for="service in services"
-        :key="service.sfid"
-        class="shadow-box p-shadow-1"
-        @click="notifySelection(service)"
-    >
-        <template #title> {{ service.name }} </template>
-        <template #content>
-            <p>Mais informações</p>
-        </template>
-    </Card>
+    <div class="p-d-flex p-flex-wrap">
+        <Card
+            v-for="service in services"
+            :key="service.sfid"
+            class="shadow-box p-shadow-1 p-mr-2 p-mb-2 c-service-card"
+            @click="notifySelection(service)"
+        >
+            <template #title> {{ service.name }} </template>
+            <template #content>
+                R${{ service.af_preco__c }} &bull;
+                {{ service.af_tempo_de_execucao_em_minutos__c }} min
+            </template>
+        </Card>
+    </div>
 </template>
 
 <script>
@@ -47,4 +50,21 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.c-service-card {
+    width: calc((100% / 6) - 0.5rem);
+    &:hover {
+        cursor: pointer;
+        background: rgba(96, 125, 139, 0.04);
+    }
+    &.selected {
+        border: 3px solid #b99973;
+    }
+}
+.p-card-title {
+    font-size: 1rem !important;
+}
+.p-card-content {
+    padding: 0 !important;
+}
+</style>
