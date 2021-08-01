@@ -1,6 +1,4 @@
 <template>
-    <h2>Selecionar Horário</h2>
-
     <div>
         <Accordion>
             <AccordionTab

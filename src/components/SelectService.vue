@@ -1,6 +1,4 @@
 <template>
-    <h2>Selecionar Serviço</h2>
-
     <div class="p-d-flex p-flex-wrap">
         <Card
             v-for="service in services"

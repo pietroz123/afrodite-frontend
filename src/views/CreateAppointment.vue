@@ -20,6 +20,8 @@
     </div> -->
 
     <div class="p-pt-3 p-px-6">
+        <h2 class="c-appointment-divider">Selecionar Serviço</h2>
+
         <SelectService
             :service-selected="serviceSelected"
             @service-selected="handleServiceSelection"
@@ -28,6 +30,8 @@
     </div>
 
     <div v-if="serviceSelected" class="p-pt-3 p-px-6">
+        <h2 class="c-appointment-divider">Selecionar Profissional</h2>
+
         <SelectProfessional
             :service="serviceSelected"
             :professional-selected="professionalSelected"
@@ -36,6 +40,8 @@
     </div>
 
     <div v-if="serviceSelected && professionalSelected" class="p-pt-3 p-px-6">
+        <h2 class="c-appointment-divider">Selecionar Horário</h2>
+
         <SelectSchedule
             :professional="professionalSelected"
             :service="serviceSelected"
@@ -47,7 +53,7 @@
         v-if="serviceSelected && professionalSelected && timeSelected"
         class="p-pt-3 p-px-6"
     >
-        <h2>Resumo</h2>
+        <h2 class="c-appointment-divider">Resumo</h2>
 
         <p>Serviço: {{ serviceSelected.name }}</p>
         <p>Profissional: {{ professionalSelected.name }}</p>
@@ -159,6 +165,16 @@ export default {
 </script>
 
 <style lang="scss">
+.c-appointment-divider {
+    &::after {
+        height: 5px;
+        background: #7a664c;
+        content: "";
+        display: block;
+        width: 100px;
+        position: absolute;
+    }
+}
 .c-selection-card {
     width: calc((100% / 6) - 0.5rem);
     &:hover {
