@@ -55,25 +55,30 @@
 
         <Button label="Confirmar agendamento" @click="scheduleAppointment" />
     </div>
+
+    <ScrollTop :threshold="200" />
 </template>
 
 <script>
 // @ is an alias to /src
-import NavBar from "../components/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
+import SelectProfessional from "@/components/SelectProfessional.vue";
+import SelectService from "@/components/SelectService.vue";
+import SelectSchedule from "@/components/SelectSchedule.vue";
+
 // import Steps from "primevue/steps";
-import SelectProfessional from "../components/SelectProfessional.vue";
-import SelectService from "../components/SelectService.vue";
-import SelectSchedule from "../components/SelectSchedule.vue";
 import Button from "primevue/button";
+import ScrollTop from "primevue/scrolltop";
 
 export default {
     components: {
         NavBar,
-        Button,
-        // Steps,
         SelectProfessional,
         SelectService,
         SelectSchedule,
+        // Steps,
+        Button,
+        ScrollTop,
     },
     data() {
         return {
