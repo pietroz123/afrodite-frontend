@@ -6,7 +6,7 @@
             v-for="service in services"
             :key="service.sfid"
             :class="{
-                'shadow-box p-shadow-1 p-mr-2 p-mb-2 c-service-card': true,
+                'p-shadow-1 p-mr-2 p-mb-2 c-selection-card': true,
                 selected:
                     serviceSelected && serviceSelected.sfid === service.sfid,
             }"
@@ -58,16 +58,6 @@ export default {
 </script>
 
 <style lang="scss">
-.c-service-card {
-    width: calc((100% / 6) - 0.5rem);
-    &:hover {
-        cursor: pointer;
-        background: rgba(96, 125, 139, 0.04);
-    }
-    &.selected {
-        border: 3px solid #b99973;
-    }
-}
 .p-card-title {
     font-size: 1rem !important;
 }

@@ -30,6 +30,7 @@
     <div v-if="serviceSelected" class="p-pt-3 p-px-6">
         <SelectProfessional
             :service="serviceSelected"
+            :professional-selected="professionalSelected"
             @professional-selected="handleProfessionalSelection"
         />
     </div>
@@ -151,3 +152,16 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+.c-selection-card {
+    width: calc((100% / 6) - 0.5rem);
+    &:hover {
+        cursor: pointer;
+        background: rgba(96, 125, 139, 0.04);
+    }
+    &.selected {
+        border: 3px solid #b99973;
+    }
+}
+</style>
