@@ -8,7 +8,7 @@
         <Accordion>
             <AccordionTab
                 v-for="timeSlot in timeSlots"
-                :header="timeSlot.day.format('dddd')"
+                :header="timeSlot.day.format('dddd (DD/MM/YYYY)')"
                 :key="timeSlot.day.valueOf()"
             >
                 <Button
