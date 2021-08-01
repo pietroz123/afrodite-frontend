@@ -37,7 +37,19 @@
         <SelectSchedule
             :professional="professionalSelected"
             :service="serviceSelected"
+            @time-selected="handleTimeSlotSelection"
         />
+    </div>
+
+    <div
+        v-if="serviceSelected && professionalSelected && timeSelected"
+        class="p-pt-3 p-px-6"
+    >
+        <h2>Resumo</h2>
+
+        <p>Serviço: {{ serviceSelected.name }}</p>
+        <p>Profissional: {{ professionalSelected.name }}</p>
+        <p>Horário: {{ timeSelected.format("dddd - DD/MM/YYYY") }}</p>
     </div>
 </template>
 
@@ -81,6 +93,7 @@ export default {
             // new
             professionalSelected: null,
             serviceSelected: null,
+            timeSelected: null,
         };
     },
     methods: {
@@ -117,6 +130,10 @@ export default {
         handleServiceSelection(serviceSelected) {
             console.log("🚀 / serviceSelected", serviceSelected);
             this.serviceSelected = serviceSelected;
+        },
+        handleTimeSlotSelection(timeSlotSelected) {
+            console.log("🚀 / timeSlotSelected", timeSlotSelected);
+            this.timeSelected = timeSlotSelected;
         },
     },
 };

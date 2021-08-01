@@ -1,9 +1,6 @@
 <template>
     <h2>Selecionar Horário</h2>
 
-    <p>{{ professional.name }}</p>
-    <p>{{ service.name }}</p>
-
     <div>
         <Accordion>
             <AccordionTab
@@ -16,6 +13,7 @@
                     :key="slot.valueOf()"
                     :label="slot.format('HH:mm')"
                     class="p-mr-2"
+                    @click="notifySelection(slot)"
                 />
             </AccordionTab>
         </Accordion>
@@ -39,6 +37,7 @@ export default {
         professional: Object,
         service: Object,
     },
+    emits: ["time-selected"],
     data() {
         return {
             timeSlots: [],
@@ -86,6 +85,9 @@ export default {
             console.log("🚀 / availableDays", availableDays);
 
             this.timeSlots = availableDays;
+        },
+        notifySelection(timeSlot) {
+            this.$emit("time-selected", timeSlot);
         },
     },
 };
