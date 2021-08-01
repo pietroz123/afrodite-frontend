@@ -5,7 +5,11 @@
         <Card
             v-for="service in services"
             :key="service.sfid"
-            class="shadow-box p-shadow-1 p-mr-2 p-mb-2 c-service-card"
+            :class="{
+                'shadow-box p-shadow-1 p-mr-2 p-mb-2 c-service-card': true,
+                selected:
+                    serviceSelected && serviceSelected.sfid === service.sfid,
+            }"
             @click="notifySelection(service)"
         >
             <template #title> {{ service.name }} </template>
@@ -23,6 +27,9 @@ import Card from "primevue/card";
 export default {
     components: {
         Card,
+    },
+    props: {
+        serviceSelected: Object,
     },
     emits: ["service-selected", "professional-selected"],
     data() {

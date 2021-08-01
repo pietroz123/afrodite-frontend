@@ -21,6 +21,7 @@
 
     <div class="p-pt-3 p-px-6">
         <SelectService
+            :service-selected="serviceSelected"
             @service-selected="handleServiceSelection"
             @professional-selected="handleProfessionalSelection"
         />
