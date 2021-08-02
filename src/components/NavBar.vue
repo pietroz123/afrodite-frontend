@@ -37,12 +37,14 @@
 import { mapActions } from "vuex";
 import Menubar from "primevue/menubar";
 import Menu from "primevue/menu";
+import Button from "primevue/button";
 
 export default {
     name: "NavBar",
     components: {
         Menubar,
         Menu,
+        Button,
     },
     data() {
         return {
