@@ -52,6 +52,11 @@ export default {
                     icon: "pi pi-calendar-plus",
                     to: "/agendamento",
                 },
+                {
+                    label: "Meus Agendamentos",
+                    icon: "pi pi-clock",
+                    to: "/meus-agendamentos",
+                },
             ],
             userItems: [
                 {

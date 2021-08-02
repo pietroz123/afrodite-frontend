@@ -36,6 +36,13 @@ const routes = [
         },
     },
     {
+        path: "/meus-agendamentos",
+        component: () => import("../views/MyAppointments.vue"),
+        meta: {
+            requiresAuth: true,
+        },
+    },
+    {
         path: "/about",
         name: "About",
         // route level code-splitting

@@ -115,13 +115,13 @@ export default {
                         )
                         .then((res) => {
                             console.log("res", res);
+
+                            // redirect
+                            this.$router.push("meus-agendamentos");
                         })
                         .finally(() => {
                             this.isLoading = false;
                         });
-
-                    // redirect to confirm
-                    // TODO
                 },
                 reject: () => {
                     // do nothing
