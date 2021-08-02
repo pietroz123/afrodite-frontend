@@ -3,7 +3,7 @@
         <NavBar />
     </div>
     <div class="p-pt-3 p-px-6">
-        <h2>Meus Agendamentos</h2>
+        <h2 class="c-main-divider">Meus Agendamentos</h2>
 
         <ul v-for="ap in appointments" :key="ap.ag_sfid">
             <li>{{ ap.ag_horario }}</li>
