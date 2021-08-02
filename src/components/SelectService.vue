@@ -41,7 +41,7 @@ export default {
     methods: {
         getServices() {
             this.$axios
-                .get(`https://afrodite-backend.herokuapp.com/api/servicos`)
+                .get(`${process.env.VUE_APP_SERVER_URL}/api/servicos`)
                 .then((res) => {
                     console.log("services", res);
                     this.services = res.data.rows;

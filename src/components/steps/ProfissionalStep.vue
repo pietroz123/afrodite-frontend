@@ -21,7 +21,7 @@ export default {
     methods: {
         getProfissionais() {
             this.$axios
-                .get("https://afrodite-backend.herokuapp.com/api/profissionais")
+                .get(`${process.env.VUE_APP_SERVER_URL}/api/profissionais`)
                 .then((res) => {
                     console.log("res", res);
                     this.profissionais = res.data.rows;

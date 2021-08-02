@@ -64,7 +64,7 @@ export default {
         getProfessionals() {
             this.$axios
                 .get(
-                    `https://afrodite-backend.herokuapp.com/api/servicos/${this.service.sfid}/profissionais`
+                    `${process.env.VUE_APP_SERVER_URL}/api/servicos/${this.service.sfid}/profissionais`
                 )
                 .then((res) => {
                     console.log("professionals", res);
