@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 
 const routes = [
     {
         path: "/",
-        name: "Home",
-        component: Home,
+        component: () => import("../views/Home.vue"),
+    },
+    {
+        path: "/login",
+        component: () => import("../views/Login.vue"),
     },
     {
         path: "/agendamento",
@@ -29,6 +31,9 @@ const routes = [
                 component: () => import("../components/steps/ResumoStep.vue"),
             },
         ],
+        meta: {
+            requiresAuth: true,
+        },
     },
     {
         path: "/about",
@@ -44,6 +49,23 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
+});
+
+/**
+ * Middleware para verificação de páginas protegidas
+ */
+router.beforeEach((to, from, next) => {
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
+        if (localStorage.getItem("user") == null) {
+            next({
+                path: "/login",
+                params: { nextUrl: to.fullPath },
+            });
+        } else {
+            next();
+        }
+    }
+    next();
 });
 
 export default router;

@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import InputMask from "primevue/inputmask";
 import Password from "primevue/password";
 import Button from "primevue/button";
@@ -61,12 +62,11 @@ export default {
         };
     },
     methods: {
-        handleSubmit() {
-            console.log("🚀 / password", this.password);
-            console.log("🚀 / mobilePhone", this.mobilePhone);
+        ...mapActions(["login"]),
 
+        handleSubmit() {
             if (this.mobilePhone && this.password) {
-                // login
+                this.login(this.mobilePhone, this.password);
             }
         },
     },

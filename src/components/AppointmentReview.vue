@@ -95,7 +95,9 @@ export default {
                             `${process.env.VUE_APP_SERVER_URL}/api/agendamentos`,
                             {
                                 horario: this.timeSelected.toISOString(),
-                                idCliente: "a015e000008zEKEAA2",
+                                idCliente: JSON.parse(
+                                    localStorage.getItem("user")
+                                ).sfid,
                                 idServico: this.serviceSelected.sfid,
                                 idProfissional: this.professionalSelected.sfid,
                             }
