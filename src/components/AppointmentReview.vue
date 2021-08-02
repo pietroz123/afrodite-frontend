@@ -86,6 +86,8 @@ export default {
                 header: "Confirmação",
                 message: "Vamos confirmar seu agendamento, tudo bem?",
                 icon: "pi pi-exclamation-triangle",
+                acceptLabel: "Sim",
+                rejectLabel: "Não",
                 accept: () => {
                     // create appointment
                     this.$axios
