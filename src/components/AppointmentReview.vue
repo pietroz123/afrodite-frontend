@@ -41,11 +41,13 @@
             </div>
 
             <div class="p-mt-4">
+                <ConfirmDialog />
                 <Button
+                    @click="scheduleAppointment()"
+                    icon="pi pi-check"
                     label="Confirmar agendamento"
-                    @click="scheduleAppointment"
-                    class="p-mt-3"
-                />
+                    class="p-mr-3"
+                ></Button>
             </div>
         </template>
     </Card>
@@ -56,6 +58,7 @@ import Card from "primevue/card";
 import Divider from "primevue/divider";
 import Avatar from "primevue/avatar";
 import Button from "primevue/button";
+import ConfirmDialog from "primevue/confirmdialog";
 
 export default {
     components: {
@@ -63,6 +66,7 @@ export default {
         Divider,
         Avatar,
         Button,
+        ConfirmDialog,
     },
     props: {
         serviceSelected: Object,
@@ -77,6 +81,34 @@ export default {
             console.log(this.serviceSelected);
             console.log(this.professionalSelected);
             console.log(this.timeSelected);
+
+            this.$confirm.require({
+                header: "Confirmação",
+                message: "Vamos confirmar seu agendamento, tudo bem?",
+                icon: "pi pi-exclamation-triangle",
+                accept: () => {
+                    // create appointment
+                    this.$axios
+                        .post(
+                            `${process.env.VUE_APP_SERVER_URL}/api/agendamentos`,
+                            {
+                                horario: this.timeSelected.toISOString(),
+                                idCliente: "a015e000008zEKEAA2",
+                                idServico: this.serviceSelected.sfid,
+                                idProfissional: this.professionalSelected.sfid,
+                            }
+                        )
+                        .then((res) => {
+                            console.log("res", res);
+                        });
+
+                    // redirect to confirm
+                    // TODO
+                },
+                reject: () => {
+                    // do nothing
+                },
+            });
         },
     },
 };

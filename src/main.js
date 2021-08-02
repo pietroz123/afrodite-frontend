@@ -15,4 +15,7 @@ import "primeicons/primeicons.css";
 const app = createApp(App);
 app.config.globalProperties.$axios = axios;
 
+import ConfirmationService from "primevue/confirmationservice";
+app.use(ConfirmationService);
+
 app.use(PrimeVue).use(store).use(router).mount("#app");
