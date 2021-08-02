@@ -51,6 +51,8 @@
             </div>
         </template>
     </Card>
+
+    <ProgressSpinner v-if="isLoading" class="c-loading-indicator" />
 </template>
 
 <script>
@@ -59,6 +61,7 @@ import Divider from "primevue/divider";
 import Avatar from "primevue/avatar";
 import Button from "primevue/button";
 import ConfirmDialog from "primevue/confirmdialog";
+import ProgressSpinner from "primevue/progressspinner";
 
 export default {
     components: {
@@ -67,11 +70,17 @@ export default {
         Avatar,
         Button,
         ConfirmDialog,
+        ProgressSpinner,
     },
     props: {
         serviceSelected: Object,
         professionalSelected: Object,
         timeSelected: Object,
+    },
+    data() {
+        return {
+            isLoading: false,
+        };
     },
     methods: {
         /**
@@ -89,6 +98,8 @@ export default {
                 acceptLabel: "Sim",
                 rejectLabel: "Não",
                 accept: () => {
+                    this.isLoading = true;
+
                     // create appointment
                     this.$axios
                         .post(
@@ -104,6 +115,9 @@ export default {
                         )
                         .then((res) => {
                             console.log("res", res);
+                        })
+                        .finally(() => {
+                            this.isLoading = false;
                         });
 
                     // redirect to confirm
@@ -118,4 +132,42 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.c-loading-indicator {
+    position: fixed;
+    z-index: 999;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+/* Transparent Overlay */
+.c-loading-indicator:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.53);
+}
+@keyframes p-progress-spinner-color {
+    100%,
+    0% {
+        stroke: #b99973;
+    }
+    40% {
+        stroke: #b99973;
+    }
+    66% {
+        stroke: #b99973;
+    }
+    80%,
+    90% {
+        stroke: #b99973;
+    }
+}
+</style>
