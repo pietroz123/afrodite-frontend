@@ -39,7 +39,7 @@ export default {
                     localStorage.setItem("user", JSON.stringify(user));
                     commit("loginSuccess", user);
 
-                    router.push("/");
+                    router.push("/agendamento");
                 })
                 .catch((err) => {
                     console.log("error", err);
