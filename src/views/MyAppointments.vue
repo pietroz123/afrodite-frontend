@@ -92,6 +92,10 @@ export default {
 .fc {
     max-height: calc(100vh - 200px);
 }
+.fc-toolbar-title {
+    text-transform: uppercase;
+    font-size: 22px !important;
+}
 .fc-toolbar-title::first-letter {
     text-transform: uppercase;
 }
