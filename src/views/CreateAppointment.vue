@@ -20,7 +20,7 @@
     </div> -->
 
     <div class="p-pt-3 p-px-6">
-        <h2 class="c-main-divider">Selecionar Serviço</h2>
+        <h2 class="c-main-divider p-pb-3">Selecionar Serviço</h2>
 
         <SelectService
             :service-selected="serviceSelected"
@@ -30,7 +30,7 @@
     </div>
 
     <div v-if="serviceSelected" class="p-pt-3 p-px-6">
-        <h2 class="c-main-divider">Selecionar Profissional</h2>
+        <h2 class="c-main-divider p-pb-3">Selecionar Profissional</h2>
 
         <SelectProfessional
             :service="serviceSelected"
@@ -40,7 +40,7 @@
     </div>
 
     <div v-if="serviceSelected && professionalSelected" class="p-pt-3 p-px-6">
-        <h2 class="c-main-divider">Selecionar Horário</h2>
+        <h2 class="c-main-divider p-pb-3">Selecionar Horário</h2>
 
         <SelectSchedule
             :professional="professionalSelected"
@@ -53,7 +53,7 @@
         v-if="serviceSelected && professionalSelected && timeSelected"
         class="p-pt-3 p-px-6"
     >
-        <h2 class="c-main-divider">Resumo</h2>
+        <h2 class="c-main-divider p-pb-3">Resumo</h2>
 
         <AppointmentReview
             :service-selected="serviceSelected"

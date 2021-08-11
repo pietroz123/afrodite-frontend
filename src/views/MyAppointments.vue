@@ -3,7 +3,7 @@
         <NavBar />
     </div>
     <div class="p-pt-3 p-px-6">
-        <h2 class="c-main-divider">Meus Agendamentos</h2>
+        <h2 class="c-main-divider p-pb-3">Meus Agendamentos</h2>
 
         <FullCalendar v-if="options.events.length" :options="options" />
     </div>
