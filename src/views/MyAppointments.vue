@@ -7,10 +7,14 @@
 
         <FullCalendar v-if="options.events.length" :options="options" />
     </div>
+    <div class="p-mt-6">
+        <Footer />
+    </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import Footer from "@/components/Footer.vue";
 import dayjs from "dayjs";
 require("dayjs/locale/pt-br");
 import "@fullcalendar/core";
@@ -24,6 +28,7 @@ import brLocale from "@fullcalendar/core/locales/pt-br";
 export default {
     components: {
         NavBar,
+        Footer,
         FullCalendar,
     },
     data() {
