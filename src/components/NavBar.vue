@@ -95,6 +95,7 @@ export default {
     color: #000000;
     border: unset;
     border-radius: unset;
+    box-shadow: 0 4px 2px -3px;
 }
 .p-menubar-start {
     margin-right: 1rem;
