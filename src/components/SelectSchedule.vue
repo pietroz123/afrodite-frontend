@@ -48,7 +48,7 @@ export default {
     methods: {
         availableSlots() {
             let availableDays = [];
-            let firstDate = dayjs(new Date(2021, 8 - 1, 2, 10)); // first slot
+            let firstDate = dayjs(new Date()); // first slot
             let currentDate = firstDate; // first slot
             // console.log(currentDate);
 
