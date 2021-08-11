@@ -1,73 +1,73 @@
 <template>
-    <div class="">
-        <NavBar />
-    </div>
-    <!-- <div>
-        <Steps :model="items" :readonly="false" />
-    </div>
-    <div>
-        <router-view
-            v-slot="{ Component }"
-            :formData="formObject"
-            @prev-page="prevPage($event)"
-            @next-page="nextPage($event)"
-            @complete="complete"
+    <layout-default>
+        <!-- <div>
+            <Steps :model="items" :readonly="false" />
+        </div>
+        <div>
+            <router-view
+                v-slot="{ Component }"
+                :formData="formObject"
+                @prev-page="prevPage($event)"
+                @next-page="nextPage($event)"
+                @complete="complete"
+            >
+                <keep-alive>
+                    <component :is="Component" />
+                </keep-alive>
+            </router-view>
+        </div> -->
+
+        <div class="p-pt-3 p-px-6">
+            <h2 class="c-main-divider p-pb-3">Selecionar Serviço</h2>
+
+            <SelectService
+                :service-selected="serviceSelected"
+                @service-selected="handleServiceSelection"
+                @professional-selected="handleProfessionalSelection"
+            />
+        </div>
+
+        <div v-if="serviceSelected" class="p-pt-3 p-px-6">
+            <h2 class="c-main-divider p-pb-3">Selecionar Profissional</h2>
+
+            <SelectProfessional
+                :service="serviceSelected"
+                :professional-selected="professionalSelected"
+                @professional-selected="handleProfessionalSelection"
+            />
+        </div>
+
+        <div
+            v-if="serviceSelected && professionalSelected"
+            class="p-pt-3 p-px-6"
         >
-            <keep-alive>
-                <component :is="Component" />
-            </keep-alive>
-        </router-view>
-    </div> -->
+            <h2 class="c-main-divider p-pb-3">Selecionar Horário</h2>
 
-    <div class="p-pt-3 p-px-6">
-        <h2 class="c-main-divider p-pb-3">Selecionar Serviço</h2>
+            <SelectSchedule
+                :professional="professionalSelected"
+                :service="serviceSelected"
+                @time-selected="handleTimeSlotSelection"
+            />
+        </div>
 
-        <SelectService
-            :service-selected="serviceSelected"
-            @service-selected="handleServiceSelection"
-            @professional-selected="handleProfessionalSelection"
-        />
-    </div>
+        <div
+            v-if="serviceSelected && professionalSelected && timeSelected"
+            class="p-pt-3 p-px-6"
+        >
+            <h2 class="c-main-divider p-pb-3">Resumo</h2>
 
-    <div v-if="serviceSelected" class="p-pt-3 p-px-6">
-        <h2 class="c-main-divider p-pb-3">Selecionar Profissional</h2>
+            <AppointmentReview
+                :service-selected="serviceSelected"
+                :professional-selected="professionalSelected"
+                :time-selected="timeSelected"
+            />
+        </div>
 
-        <SelectProfessional
-            :service="serviceSelected"
-            :professional-selected="professionalSelected"
-            @professional-selected="handleProfessionalSelection"
-        />
-    </div>
-
-    <div v-if="serviceSelected && professionalSelected" class="p-pt-3 p-px-6">
-        <h2 class="c-main-divider p-pb-3">Selecionar Horário</h2>
-
-        <SelectSchedule
-            :professional="professionalSelected"
-            :service="serviceSelected"
-            @time-selected="handleTimeSlotSelection"
-        />
-    </div>
-
-    <div
-        v-if="serviceSelected && professionalSelected && timeSelected"
-        class="p-pt-3 p-px-6"
-    >
-        <h2 class="c-main-divider p-pb-3">Resumo</h2>
-
-        <AppointmentReview
-            :service-selected="serviceSelected"
-            :professional-selected="professionalSelected"
-            :time-selected="timeSelected"
-        />
-    </div>
-
-    <ScrollTop :threshold="200" />
+        <ScrollTop :threshold="200" />
+    </layout-default>
 </template>
 
 <script>
-// @ is an alias to /src
-import NavBar from "@/components/NavBar.vue";
 import SelectProfessional from "@/components/SelectProfessional.vue";
 import SelectService from "@/components/SelectService.vue";
 import SelectSchedule from "@/components/SelectSchedule.vue";
@@ -78,7 +78,6 @@ import ScrollTop from "primevue/scrolltop";
 
 export default {
     components: {
-        NavBar,
         SelectProfessional,
         SelectService,
         SelectSchedule,
